@@ -1,10 +1,14 @@
 # JBoss EAP 8.1 Beta, evolve a simple Jakarta EE application to use JBoss EAP Provisioning
 
-This application is a Jakarta EE JAXRS endpoint. 
-This project describes the steps to evolve the maven `pom.xml` file to use the EAP Maven Plugin to provision a trimmed server
-and deploy the application.
+This application is a Jakarta EE JAX-RS endpoint. 
+This project describes the steps to evolve the maven `pom.xml` file to use the EAP Maven Plugin to enable JBOSS EAP provisioning.
 
-The `pom.xml` file is configured to use JBoss EAP 8.1 BOM and Redhat Maven repositories.
+We are using the EAP Maven Plugin to:
+
+* Provision a trimmed server and deploy the application.
+* Package the server and application as a Bootable JAR.
+ 
+The `pom.xml` file is configured to produce a war to be deployed in JBoss EAP 8.1 server.
 
 ## Provisioning the server and the application using the EAP Maven Plugin
 
@@ -74,4 +78,4 @@ Adds the following XML configuration to the EAP Maven Plugin configuration:
           <bootable-jar>true</bootable-jar>
 ```
 
-To start the bootable JAR call: `java -jar eap-jaxrs-bootable.jar`
+To start the bootable JAR call: `java -jar target/eap-jaxrs-bootable.jar`
