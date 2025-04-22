@@ -10,6 +10,11 @@ We are using the EAP Maven Plugin to:
  
 The `pom.xml` file is configured to produce a war to be deployed in JBoss EAP 8.1 server.
 
+## Pre-requisites:
+
+* Maven 3.8+ is installed
+* JDK 17 or 21 is installed.
+
 ## Provisioning the server and the application using the EAP Maven Plugin
 
 Adds the following  plugin configuration to the `plugins` section of the `pom.xml` file:
