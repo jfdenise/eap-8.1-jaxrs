@@ -61,6 +61,8 @@ Adds the following  plugin configuration to the `plugins` section of the `pom.xm
           </plugin>
 ```
 
+To build server and deploy the application call: `mvn clean package`
+
 To start the server call: `./target/server/standalone.sh`
 
 ### Trimming numbers
@@ -68,12 +70,26 @@ To start the server call: `./target/server/standalone.sh`
 #### Full JBoss EAP 8.1 
 
 * Installation size: `290MB`
-* Heap Memory: `57MB`
+* Memory (`jcmd <pid> GC.heap_info`):
+```
+garbage-first heap   total 1335296K, used 395680K [0x00000000ae800000, 0x0000000100000000)
+  region size 1024K, 353 young (361472K), 15 survivors (15360K)
+ Metaspace       used 76140K, committed 78912K, reserved 1179648K
+  class space    used 9703K, committed 10816K, reserved 1048576K
+
+```
 
 #### Trimmed JBoss EAP 8.1 server
 
 * Installation size: `77MB`
-* Heap Memory: `33MB`
+* Memory (`jcmd <pid> GC.heap_info`):
+```
+ garbage-first heap   total 1335296K, used 135947K [0x00000000ae800000, 0x0000000100000000)
+  region size 1024K, 114 young (116736K), 8 survivors (8192K)
+ Metaspace       used 48460K, committed 50176K, reserved 1114112K
+  class space    used 6041K, committed 6784K, reserved 1048576K
+
+```
 
 ## Packaging the server and the application as a Bootable JAR
 
@@ -82,5 +98,7 @@ Adds the following XML configuration to the EAP Maven Plugin configuration:
 ```
           <bootable-jar>true</bootable-jar>
 ```
+
+To build the bootable JAR call: `mvn clean package`
 
 To start the bootable JAR call: `java -jar target/eap-jaxrs-bootable.jar`
